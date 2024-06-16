@@ -5,20 +5,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" />
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/styles/loco.css">
+    <link rel="stylesheet" href="/styles/style.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Product Design</title>
 </head>
 
 <body>
 
-    <div id="cursor" class="bg-slate-100 w-[15px] h-[15px] rounded-full z-50 fixed top-0 left-0"></div>
-
     <main>
+
+        <div id="cursor" class="bg-slate-100 w-[15px] h-[15px] rounded-full z-50 absolute top-0 left-0"></div>
 
         <div id="main" class="w-screen">
 
-            <div id="hero-section" class="h-screen bg-zinc-900 text-white">
+            <div id="hero-section" class="h-screen bg-zinc-900 text-white relative">
                 <nav>
                     <div id="nav" class="flex flex-row item-center justify-between p-10">
                         <a href="#" class="text-xl tracking-widest">Nehad</a>
@@ -27,22 +28,35 @@
                 </nav>
 
                 <div id="hero-heading" class="pl-8 pt-4">
-                    <h1
-                        class="text-[11vw] uppercase text-slate-300 font-semibold opacity-70 tracking-wider leading-none">
-                        product
-                    </h1>
-                    <div class="w-fit">
+                    <div class="overflow-hidden">
                         <h1
-                            class="text-[11vw] uppercase text-slate-300 pl-40 font-semibold opacity-70 tracking-wider leading-none">
-                            designer</h1>
-                        <h5 class="uppercase text-right text-slate-100 font-semibold text-lg">based in chittagong</h5>
+                            class="text-[11vw] uppercase text-slate-300 font-semibold opacity-70 tracking-wider leading-none translate-y-full">
+                            product
+                        </h1>
+                    </div>
+                    <div class="w-fit">
+                        <div class="overflow-hidden">
+                            <h1
+                                class="text-[11vw] uppercase text-slate-300 pl-40 font-semibold opacity-70 tracking-wider leading-none translate-y-full">
+                                designer</h1>
+                        </div>
+                        <div class="overflow-hidden">
+                            <h5 class="uppercase text-right text-slate-100 font-semibold text-lg -translate-y-full">
+                                based in chittagong</h5>
+                        </div>
+
                     </div>
 
                 </div>
 
                 <div id="hero-meeting" class="float-right px-10 pt-32">
-                    <h3 class="uppercase text-slate-100 font-semibold">Available for work</h3>
-                    <h3 class="uppercase text-slate-100 font-semibold pt-2">work form july 24'</h3>
+                    <div class="overflow-hidden">
+                        <h3 class="uppercase text-slate-100 font-semibold -translate-y-full">Available for work</h3>
+                    </div>
+
+                    <div class="overflow-hidden">
+                        <h3 class="uppercase text-slate-100 font-semibold pt-2 -translate-y-full">work form july 24'</h3>
+                    </div>
                 </div>
 
                 <div id="hero-footer" class="flex flex-row item-center justify-between px-10 absolute w-full bottom-3">
@@ -118,7 +132,9 @@
                         make it visually appealing, functional, and bring a smile to people's faces. I'm the designer
                         you want on your team if you want to make people say 'I need that in my life!'. </p>
 
-                    <a href="#" class="px-4 py-2 border-2 border-slate-100 rounded-full transition-all duration-500 ease-in-out hover:bg-slate-100 hover:text-zinc-900">Let's Talk</a>
+                    <a href="#"
+                        class="px-4 py-2 border-2 border-slate-100 rounded-full transition-all duration-500 ease-in-out hover:bg-slate-100 hover:text-zinc-900">Let's
+                        Talk</a>
                 </div>
             </div>
 
@@ -147,11 +163,12 @@
 
     </main>
 
-    <footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+        integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.min.js"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="script.js"></script>
 </body>
 
