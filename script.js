@@ -26,7 +26,6 @@ const cursorAnimation = () => {
 
     h1Tags.forEach(h1Tag => {
         h1Tag.addEventListener('mouseenter', function () {
-            console.log('mouse entered');
             cursor.style.transform = 'scale(2)';
         });
 
@@ -34,35 +33,40 @@ const cursorAnimation = () => {
             cursor.style.transform = 'scale(1)';
         });
     });
-}
+};
 
 document.addEventListener('DOMContentLoaded', cursorAnimation);
 
-let time = document.getElementById('time');
+// ---------------------------------------------------------------------------------------------------
+// Hero section animation
 
-function showTime() {
-    let date = new Date();
+const heroSectionLoadingIntro = () => {
 
-    let hoursNow = date.getHours();
-    let minutesNow = date.getMinutes();
-    let secondsNow = date.getSeconds();
+    let tl3 = gsap.timeline();
 
-    let isMorning = hoursNow < 12;
+    tl3.to(document.querySelectorAll('#hero-heading h1'), {
+        delay: 0.7,
+        y: 0,
+        duration: 1,
+        stagger: 0.2
+    })
+        .to(document.querySelector('#hero-heading h5'), {
+            y: 0,
+            delay: -0.5
+        })
+        .to(document.querySelectorAll('#hero-meeting h3'), {
+            y: 0,
+            delay: -0.2,
+            stagger: 0.2
+        })
+        .from(document.querySelector('#hero-footer'), {
+            opacity: 0,
+            delay: -0.1,
+            stagger: 0.2
+        });
+};
 
-    if (hoursNow > 12) {
-        hoursNow = hoursNow - 12;
-    } else if (hoursNow === 0) {
-        hoursNow = 12;
-    }
-
-    time.textContent = `${hoursNow.toString().padStart(2, '0')}:${minutesNow.toString().padStart(2, '0')}:${secondsNow.toString().padStart(2, '0')} ${isMorning ? "AM" : "PM"} EST`;
-
-    console.log(hoursNow, ':', minutesNow, ':', secondsNow, isMorning ? "AM" : "PM");
-}
-
-setInterval(showTime, 1000);
-
-showTime();
+heroSectionLoadingIntro();
 
 const navbarAnimation = () => {
 
@@ -86,11 +90,11 @@ const navbarAnimation = () => {
                 ease: "expo.inOut",
             });
     });
-    
+
     let tl2 = gsap.timeline();
 
     document.querySelector('#menu-close').addEventListener('click', function () {
-        
+
         tl2.to('#menu h3', {
             y: -20,
             duration: 1,
@@ -99,14 +103,13 @@ const navbarAnimation = () => {
             ease: "expo.out",
         })
 
-        .to(document.querySelector('#menu-open'), {
-            x: 0,
-            duration: 1,
-            opacity: 1,
+            .to(document.querySelector('#menu-open'), {
+                x: 0,
+                duration: 1,
+                opacity: 1,
 
-            ease: "power4.out",
-        });
-
+                ease: "power4.out",
+            });
     });
 
     gsap.from(document.querySelector('#hero-section #nav'), {
@@ -115,29 +118,54 @@ const navbarAnimation = () => {
         opacity: 0,
         duration: 1.2
     });
-}
+};
 
 navbarAnimation();
 
-const tl3 = gsap.timeline();
+const linkAnimation = () => {
 
-tl3.to(document.querySelectorAll('#hero-heading h1'), {
-    delay: 0.7,
-    y: 0,
-    duration: 1,
-    stagger: 0.2
-})
-    .to(document.querySelector('#hero-heading h5'), {
-        y: 0,
-        delay: -0.5
-    })
-    .to(document.querySelectorAll('#hero-meeting h3'), {
-        y: 0,
-        delay: -0.2,
-        stagger: 0.2
-    })
-    .from(document.querySelector('#hero-footer'), {
-        opacity: 0,
-        delay: -0.1,
-        stagger: 0.2
-    })
+    document.querySelectorAll('#hero-section #hero-footer a').forEach(heroLink => {
+        heroLink.addEventListener('mouseover', function () {
+            gsap.to(this.querySelector('i'), {
+                rotate: '0',
+                duration: 0.3
+            });
+        });
+
+        heroLink.addEventListener('mouseleave', function () {
+            gsap.to(this.querySelector('i'), {
+                rotate: '-45deg',
+                duration: 0.3
+            });
+        });
+    });
+}
+
+linkAnimation();
+
+
+let time = document.getElementById('time');
+
+function showTime() {
+    let date = new Date();
+
+    let hoursNow = date.getHours();
+    let minutesNow = date.getMinutes();
+    let secondsNow = date.getSeconds();
+
+    let isMorning = hoursNow < 12;
+
+    if (hoursNow > 12) {
+        hoursNow = hoursNow - 12;
+    } else if (hoursNow === 0) {
+        hoursNow = 12;
+    }
+
+    time.textContent = `${hoursNow.toString().padStart(2, '0')}:${minutesNow.toString().padStart(2, '0')}:${secondsNow.toString().padStart(2, '0')} ${isMorning ? "AM" : "PM"} EST`;
+
+    // console.log(hoursNow, ':', minutesNow, ':', secondsNow, isMorning ? "AM" : "PM");
+}
+
+setInterval(showTime, 1000);
+
+showTime();
