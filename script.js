@@ -5,13 +5,8 @@ const scroll = new LocomotiveScroll({
 
 const cursorAnimation = () => {
 
-    let cursor = document.getElementById('cursor');
+    let cursor = document.querySelector('#cursor');
     let h1Tags = document.querySelectorAll('h1');
-    let h3Tags = document.querySelectorAll('h3');
-    let h5Tags = document.querySelectorAll('h5');
-    let aTags = document.querySelectorAll('a');
-    let pTags = document.querySelectorAll('p');
-    let iTags = document.querySelectorAll('i');
 
     window.addEventListener('mousemove', function (event) {
 
@@ -29,19 +24,19 @@ const cursorAnimation = () => {
         cursor.classList.add('backdrop-invert');
     });
 
-
     h1Tags.forEach(h1Tag => {
         h1Tag.addEventListener('mouseenter', function () {
+            console.log('mouse entered');
             cursor.style.transform = 'scale(2)';
         });
 
         h1Tag.addEventListener('mouseleave', function () {
             cursor.style.transform = 'scale(1)';
-        })
+        });
     });
 }
 
-cursorAnimation();
+document.addEventListener('DOMContentLoaded', cursorAnimation);
 
 let time = document.getElementById('time');
 
@@ -69,8 +64,52 @@ setInterval(showTime, 1000);
 
 showTime();
 
-function navbarAnimation() {
-    gsap.from(document.querySelector('#hero-section nav'), {
+const navbarAnimation = () => {
+
+    let tl1 = gsap.timeline();
+
+    document.querySelector('#menu-open').addEventListener('click', function () {
+
+        tl1.to(document.querySelector('#menu-open'), {
+            x: 120,
+            duration: 5,
+            opacity: 0,
+            ease: "expo.out",
+        })
+
+            .to('#menu h3', {
+                y: 30,
+                duration: 1,
+                opacity: 1,
+                stagger: 0.15,
+                delay: -4.5,
+                ease: "expo.inOut",
+            });
+    });
+    
+    let tl2 = gsap.timeline();
+
+    document.querySelector('#menu-close').addEventListener('click', function () {
+        
+        tl2.to('#menu h3', {
+            y: -20,
+            duration: 1,
+            opacity: 0,
+            stagger: 0.15,
+            ease: "expo.out",
+        })
+
+        .to(document.querySelector('#menu-open'), {
+            x: 0,
+            duration: 1,
+            opacity: 1,
+
+            ease: "power4.out",
+        });
+
+    });
+
+    gsap.from(document.querySelector('#hero-section #nav'), {
         delay: 0.5,
         y: -50,
         opacity: 0,
@@ -80,9 +119,9 @@ function navbarAnimation() {
 
 navbarAnimation();
 
-const tl = gsap.timeline();
+const tl3 = gsap.timeline();
 
-tl.to(document.querySelectorAll('#hero-heading h1'), {
+tl3.to(document.querySelectorAll('#hero-heading h1'), {
     delay: 0.7,
     y: 0,
     duration: 1,

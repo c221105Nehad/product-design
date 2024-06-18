@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Cursor</title>
+    <style>
+        body {
+            cursor: none;
+            /* Hide the default cursor */
+        }
+
+        .custom-cursor {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: black;
+            border-radius: 50%;
+            pointer-events: none;
+            transition: transform 0.2s ease;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="custom-cursor" id="cursor"></div>
+    <h1>Hover over me!</h1>
+    <h1>Hover over me too!</h1>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const cursor = document.getElementById('cursor');
+            const h1Elements = document.querySelectorAll('h1');
+
+            // Move the custom cursor with the mouse
+            document.addEventListener('mousemove', (e) => {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+            });
+
+            // Scale the cursor up when hovering over an h1
+            h1Elements.forEach(h1 => {
+                h1.addEventListener('mouseenter', () => {
+                    cursor.style.transform = 'scale(1.5)';
+                });
+                h1.addEventListener('mouseleave', () => {
+                    cursor.style.transform = 'scale(1)';
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
