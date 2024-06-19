@@ -1,12 +1,19 @@
+
+// ------------------------------------------------------------------------------------------
+// Locomotive for smooth scrolling
+
 const scroll = new LocomotiveScroll({
     el: document.querySelector('#main'),
     smooth: true
 });
 
+
+// ------------------------------------------------------------------------------------------
+// Cursor animation
+
 const cursorAnimation = () => {
 
     let cursor = document.querySelector('#cursor');
-    let h1Tags = document.querySelectorAll('h1');
 
     window.addEventListener('mousemove', function (event) {
 
@@ -19,25 +26,31 @@ const cursorAnimation = () => {
         });
     });
 
+    document.querySelectorAll('#hero-section a, #about-section a, #subfooter-section a, #footer-section a').forEach(heroLink => {
+        heroLink.addEventListener('mouseover', function () {
+            gsap.to(cursor, {
+                height: '20px',
+                width: '20px',
+            });
+        });
+
+        heroLink.addEventListener('mouseout', function () {
+            gsap.to(cursor, {
+                height: '15px',
+                width: '15px',
+            });
+        });
+    });
+
     document.querySelector('div').addEventListener('mouseover', function () {
         cursor.classList.remove('bg-slate-100');
         cursor.classList.add('backdrop-invert');
-    });
-
-    h1Tags.forEach(h1Tag => {
-        h1Tag.addEventListener('mouseenter', function () {
-            cursor.style.transform = 'scale(2)';
-        });
-
-        h1Tag.addEventListener('mouseleave', function () {
-            cursor.style.transform = 'scale(1)';
-        });
     });
 };
 
 document.addEventListener('DOMContentLoaded', cursorAnimation);
 
-// ---------------------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------------
 // Hero section animation
 
 const heroSectionLoadingIntro = () => {
@@ -70,6 +83,13 @@ heroSectionLoadingIntro();
 
 const navbarAnimation = () => {
 
+    gsap.from(document.querySelector('#hero-section #nav'), {
+        delay: 0.5,
+        y: -50,
+        opacity: 0,
+        duration: 1.2
+    });
+
     let tl1 = gsap.timeline();
 
     document.querySelector('#menu-open').addEventListener('click', function () {
@@ -81,13 +101,13 @@ const navbarAnimation = () => {
             ease: "expo.out",
         })
 
-            .to('#menu h3', {
+            .to('#menu a', {
                 y: 30,
                 duration: 1,
                 opacity: 1,
                 stagger: 0.15,
                 delay: -4.5,
-                ease: "expo.inOut",
+                ease: "elastic.out(1,0.3)",
             });
     });
 
@@ -95,37 +115,34 @@ const navbarAnimation = () => {
 
     document.querySelector('#menu-close').addEventListener('click', function () {
 
-        tl2.to('#menu h3', {
+        tl2.to('#menu a', {
             y: -20,
             duration: 1,
             opacity: 0,
             stagger: 0.15,
-            ease: "expo.out",
+            ease: "expo.out"
         })
 
             .to(document.querySelector('#menu-open'), {
                 x: 0,
                 duration: 1,
                 opacity: 1,
-
-                ease: "power4.out",
+                ease: "elastic.out(1,0.3)"
             });
     });
 
-    gsap.from(document.querySelector('#hero-section #nav'), {
-        delay: 0.5,
-        y: -50,
-        opacity: 0,
-        duration: 1.2
-    });
+
 };
 
 navbarAnimation();
 
-const linkAnimation = () => {
+const heroLinkAnimation = () => {
 
-    document.querySelectorAll('#hero-section #hero-footer a').forEach(heroLink => {
+    document.querySelectorAll('#hero-footer a').forEach(heroLink => {
         heroLink.addEventListener('mouseover', function () {
+
+            heroLink.style.transform = 'rotateY(30deg)';
+
             gsap.to(this.querySelector('i'), {
                 rotate: '0',
                 duration: 0.3
@@ -133,6 +150,9 @@ const linkAnimation = () => {
         });
 
         heroLink.addEventListener('mouseleave', function () {
+
+            heroLink.style.transform = 'rotateY(0deg)';
+
             gsap.to(this.querySelector('i'), {
                 rotate: '-45deg',
                 duration: 0.3
@@ -141,8 +161,58 @@ const linkAnimation = () => {
     });
 }
 
-linkAnimation();
+document.addEventListener('DOMContentLoaded', heroLinkAnimation);
 
+const heroFooterIconAnimation = () => {
+
+    document.querySelectorAll('#hero-icons i').forEach(heroIcon => {
+        heroIcon.addEventListener('mouseover', function () {
+
+            console.log('mouse entered');
+            heroIcon.style.transform = 'scale(3)';
+        });
+
+        heroIcon.addEventListener('mouseleave', function () {
+
+            console.log('mouse leave');
+            heroIcon.style.transform = 'scale(1)';
+        });
+    });
+}
+
+
+// document.addEventListener('DOMContentLoaded', heroFooterIconAnimation);
+
+
+const subFooterLinkAnimation = () => {
+
+    // let subFooterLink = document.querySelector('#subfooter-section  a');
+
+    document.querySelectorAll('#subfooter-section a').forEach(subFooterLink => {
+        subFooterLink.addEventListener('mouseover', function () {
+
+            subFooterLink.style.transform = 'rotateY(30deg)';
+
+            gsap.to(this.querySelector('i'), {
+                rotate: '0',
+                duration: 0.3
+            });
+        });
+
+        subFooterLink.addEventListener('mouseleave', function () {
+
+            subFooterLink.style.transform = 'rotateY(0deg)';
+
+            gsap.to(this.querySelector('i'), {
+                rotate: '-45deg',
+                duration: 0.3
+            });
+        });
+    });
+
+};
+
+subFooterLinkAnimation();
 
 let time = document.getElementById('time');
 

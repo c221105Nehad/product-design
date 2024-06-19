@@ -15,7 +15,7 @@
 
     <main>
 
-        <div id="cursor" class="bg-slate-100 w-[15px] h-[15px] rounded-full z-50 absolute top-0 left-0"></div>
+        <div id="cursor" class="bg-slate-100 w-[15px] h-[15px] rounded-full z-50 absolute -top-2 left-1"></div>
 
         <div id="main" class="w-screen">
 
@@ -26,15 +26,15 @@
                         <div class="flex flex-row gap-x-10 relative">
 
                             <div id="menu" class="flex flex-row gap-x-10 -translate-y-[30px]">
-                                <h3 class="cursor-pointer opacity-0">HOME</h3>
-                                <h3 class="cursor-pointer opacity-0">ABOUT</h3>
-                                <h3 class="cursor-pointer opacity-0">SKILLS</h3>
-                                <h3 class="cursor-pointer opacity-0">CONTACT</h3>
-                                <h3 id="menu-close" class="cursor-pointer opacity-0">MENU-</h3>
+                                <a href="#" class="cursor-pointer opacity-0">HOME</a>
+                                <a href="#" class="cursor-pointer opacity-0">ABOUT</a>
+                                <a href="#" class="cursor-pointer opacity-0">SKILLS</a>
+                                <a href="#" class="cursor-pointer opacity-0">CONTACT</a>
+                                <a href="#" id="menu-close" class="cursor-pointer opacity-0">MENU-</a>
                             </div>
 
-                            <h3 id="menu-open" class="cursor-pointer absolute top-0 right-0">
-                                MENU+</h3>
+                            <a href="#" id="menu-open" class="cursor-pointer absolute top-0 right-0">
+                                MENU+</a>
 
                         </div>
                     </div>
@@ -75,15 +75,18 @@
 
                 <div id="hero-footer" class="flex flex-row item-center justify-between px-10 absolute w-full bottom-3">
 
-                    <a href="#" class="uppercase font-semibold">currently working at nowhere<i
+                    <a href="#"
+                        class="uppercase font-semibold transition-all duration-500 ease-in-out origin-top-left">currently
+                        working at nowhere<i
                             class="fa-solid fa-arrow-right pl-1 font-thin -rotate-45 inline-block"></i></a>
 
-                    <a href="#" class="uppercase font-semibold">iiuc ambassador<i
-                            class="fa-solid fa-arrow-right pl-1 font-thin -rotate-45 inline-block"></i></a>
+                    <a href="#"
+                        class="uppercase font-semibold transition-all duration-500 ease-in-out origin-top-left">iiuc
+                        ambassador<i class="fa-solid fa-arrow-right pl-1 font-thin -rotate-45 inline-block"></i></a>
 
                     <div id="hero-icons">
-                        <i class="ri-arrow-down-line p-2 rounded-full bg-zinc-800 cursor-pointer"></i>
-                        <i class="ri-arrow-down-line p-2 rounded-full bg-zinc-800 cursor-pointer"></i>
+                        <i class="fa-solid fa-angle-down p-2 rounded-full bg-zinc-800 cursor-pointer transform transition-all duration-500 ease-in-out hover:bg-zinc-600"></i>
+                        <i class="fa-solid fa-angle-down p-2 rounded-full bg-zinc-800 cursor-pointer transform transition-all duration-500 ease-in-out hover:bg-zinc-600"></i>
                     </div>
 
                 </div>
@@ -154,24 +157,26 @@
 
             <div id="subfooter-section" class="bg-zinc-900 text-white px-10 pb-40 pt-10">
                 <h5 class="opacity-70 uppercase font-semibold">(forgot to mention)</h5>
-                <a href="#" class="text-slate-100 uppercase font-semibold">subscribe to my channel<i
-                        class="ri-arrow-right-up-line"></i></a>
+                <a href="#" class="uppercase font-semibold transition-all duration-500 ease-in-out origin-top-right hover:-rotate-45">currently
+                    working at nowhere<i class="fa-solid fa-arrow-right pl-1 font-thin -rotate-45 inline-block"></i></a>
             </div>
 
-            <div id="footer-section"
-                class="px-10 py-5 bg-zinc-900 text-white flex flex-row items-center justify-between">
-                <div class="flex gap-x-10">
-                    <p class="font-semibold">2024 &copy;</p>
-                    <p id="time" class="font-semibold">9:51 AM EST </p>
-                </div>
+            <footer>
+                <div id="footer-section"
+                    class="px-10 py-5 bg-zinc-900 text-white flex flex-row items-center justify-between">
+                    <div class="flex gap-x-10">
+                        <p class="font-semibold">2024 &copy;</p>
+                        <p id="time" class="font-semibold">9:51 AM EST </p>
+                    </div>
 
-                <div class="flex gap-x-12">
-                    <a href="#" class="font-semibold uppercase text-slate-100">dribble</a>
-                    <a href="#" class="font-semibold uppercase text-slate-100">instagram</a>
-                    <a href="#" class="font-semibold uppercase text-slate-100">linkedin</a>
-                    <a href="#" class="font-semibold uppercase text-slate-100">twitter</a>
+                    <div class="flex gap-x-12">
+                        <a href="#" class="font-semibold uppercase text-slate-100">dribble</a>
+                        <a href="#" class="font-semibold uppercase text-slate-100">instagram</a>
+                        <a href="#" class="font-semibold uppercase text-slate-100">linkedin</a>
+                        <a href="#" class="font-semibold uppercase text-slate-100">twitter</a>
+                    </div>
                 </div>
-            </div>
+            </footer>
 
         </div>
 
