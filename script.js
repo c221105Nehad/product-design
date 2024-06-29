@@ -42,10 +42,13 @@ const cursorAnimation = () => {
         });
     });
 
+
+
     document.querySelector('div').addEventListener('mouseover', function () {
         cursor.classList.remove('bg-slate-100');
         cursor.classList.add('backdrop-invert');
     });
+
 };
 
 document.addEventListener('DOMContentLoaded', cursorAnimation);
@@ -130,8 +133,6 @@ const navbarAnimation = () => {
                 ease: "elastic.out(1,0.3)"
             });
     });
-
-
 };
 
 navbarAnimation();
@@ -163,26 +164,8 @@ const heroLinkAnimation = () => {
 
 document.addEventListener('DOMContentLoaded', heroLinkAnimation);
 
-const heroFooterIconAnimation = () => {
-
-    document.querySelectorAll('#hero-icons i').forEach(heroIcon => {
-        heroIcon.addEventListener('mouseover', function () {
-
-            console.log('mouse entered');
-            heroIcon.style.transform = 'scale(3)';
-        });
-
-        heroIcon.addEventListener('mouseleave', function () {
-
-            console.log('mouse leave');
-            heroIcon.style.transform = 'scale(1)';
-        });
-    });
-}
-
-
-// document.addEventListener('DOMContentLoaded', heroFooterIconAnimation);
-
+// ------------------------------------------------------------------------------------------
+// Sub-footer section animation
 
 const subFooterLinkAnimation = () => {
 
@@ -239,3 +222,55 @@ function showTime() {
 setInterval(showTime, 1000);
 
 showTime();
+
+// ------------------------------------------------------------------------------------------
+// Animated Section
+
+document.querySelectorAll('.card').forEach(card => {
+
+    let rotate = 0;
+    let differenceRotate;
+
+    card.addEventListener('mousemove', function (event) {
+
+        // let positionOfCard = event.clientY - (card.getBoundingClientRect().bottom - (card.getBoundingClientRect().top / 2));
+
+        let positionOfCard = event.clientY - card.getBoundingClientRect().top;
+        console.log(positionOfCard);
+        console.log(card.getBoundingClientRect());
+
+        let differenceRotate = event.clientX - rotate;
+        rotate = event.clientX;
+
+        gsap.to(card.querySelector('img'), {
+            opacity: 1,
+            ease: Power3,
+            top: positionOfCard,
+            left: event.clientX,
+            scale: 1.2,
+            rotate: gsap.utils.clamp(-40, 40, differenceRotate)
+        });
+
+        gsap.to(card.querySelector('h1'), {
+            opacity: 0.7,
+            scale: 0.9,
+            ease: Power1
+        });
+    });
+
+    card.addEventListener('mouseleave', function (event) {
+
+        if (card.getBoundingClientRect()) {
+
+            gsap.to(card.querySelector('img'), {
+                opacity: 0,
+                ease: Power3.easeOut,
+            });
+
+            gsap.to(card.querySelector('h1'), {
+                scale: 1,
+                ease: Power1
+            });
+        }
+    });
+});
